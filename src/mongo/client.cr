@@ -173,10 +173,6 @@ class Mongo::Client
     LibMongoC.client_set_read_prefs(self, value)
   end
 
-  def finalize
-    LibMongoC.client_destroy(self)
-  end
-
   def to_unsafe
     @handle
   end
