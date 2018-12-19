@@ -15,6 +15,7 @@ class Mongo::Client
 
   # Creates a new Client using uri expressed as a String or Uri class instance.
   def initialize(uri : String | Uri = "mongodb://localhost")
+    LibMongoC.mongo_init()
     handle =
       if uri.is_a?(String)
         LibMongoC.client_new(uri)
