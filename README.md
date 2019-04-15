@@ -34,7 +34,7 @@ Add this to your application's `shard.yml`:
 
 ```yaml
 mongo:
-  github: datanoise/mongo.cr
+  github: ambercommunity/mongo.cr
   branch: master
 ```
 
