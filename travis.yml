@@ -1,0 +1,7 @@
+language: crystal
+
+before_install:
+  - sudo apt-get install -y libmongoc-dev libbson-dev
+
+services:
+  - mongodb

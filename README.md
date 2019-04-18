@@ -1,4 +1,4 @@
-# mongo.cr
+# mongo.cr [![Build Status](https://travis-ci.org/ambercommunity/mongo.cr.svg?branch=master)](https://travis-ci.org/ambercommunity/mongo.cr)
 
 This library provides binding for MongoDB C Driver. The goal is to provide a driver to access MongoDB.
 
@@ -8,7 +8,7 @@ This library provides binding for MongoDB C Driver. The goal is to provide a dri
 
 # Requirements
 
-- Crystal language version 0.20 and higher.
+- Crystal language version 0.27.0 and higher.
 - libmongoc version 1.1.0
 - libbson verion 1.1.0
 
@@ -34,7 +34,7 @@ Add this to your application's `shard.yml`:
 
 ```yaml
 mongo:
-  github: datanoise/mongo.cr
+  github: ambercommunity/mongo.cr
   branch: master
 ```
 
