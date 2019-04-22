@@ -15,6 +15,7 @@ class Mongo::Client
 
   # Creates a new Client using uri expressed as a String or Uri class instance.
   def initialize(uri : String | Uri = "mongodb://localhost")
+    LibMongoC.mongo_init()
     handle =
       if uri.is_a?(String)
         LibMongoC.client_new(uri)
@@ -170,10 +171,6 @@ class Mongo::Client
   # Sets the default read preferences to use with future operations upon `Client`.
   def read_prefs=(value : ReadPrefs)
     LibMongoC.client_set_read_prefs(self, value)
-  end
-
-  def finalize
-    LibMongoC.client_destroy(self)
   end
 
   def to_unsafe

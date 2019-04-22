@@ -337,6 +337,7 @@ lib LibMongoC
 
   type Client = Void*
 
+  fun mongo_init = mongoc_init()
   fun client_new = mongoc_client_new(uri_string: UInt8*) : Client
   fun client_set_stream_initiator = mongoc_client_set_stream_initiator(client: Client, initiator: StreamInitiator, user_data: Void*)
   fun client_new_from_uri = mongoc_client_new_from_uri(uri: Uri) : Client
