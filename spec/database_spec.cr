@@ -24,20 +24,22 @@ describe Mongo::Database do
     db.drop
   end
 
-  it "should be able to manage users" do
-    client = Mongo::Client.new("mongodb://localhost")
-    db = client["my_db_#{Time.now.to_unix}"]
-    db.add_user("new_user", "new_pass")
-    db["my_col"].insert(BSON.new)
-    user = db.users.not_nil!["0"]
-    if user.is_a?(BSON)
-      user["user"].should eq("new_user")
-    else
-      fail "expected a document"
+  unless ENV["travis"]? == true
+    it "should be able to manage users" do
+      client = Mongo::Client.new("mongodb://localhost")
+      db = client["my_db_#{Time.now.to_unix}"]
+      db.add_user("new_user", "new_pass")
+      db["my_col"].insert(BSON.new)
+      user = db.users.not_nil!["0"]
+      if user.is_a?(BSON)
+        user["user"].should eq("new_user")
+      else
+        fail "expected a document"
+      end
+      db.remove_user("new_user")
+      db.users.not_nil!.empty?.should be_true
+      db.drop
     end
-    db.remove_user("new_user")
-    db.users.not_nil!.empty?.should be_true
-    db.drop
   end
 
   it "should be able to modify write_concern" do
