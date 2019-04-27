@@ -1,3 +1,5 @@
+dist: xenial
+sudo: required
 language: crystal
 
 before_install:
@@ -5,3 +7,6 @@ before_install:
 
 services:
   - mongodb
+
+script:
+  - crystal spec
