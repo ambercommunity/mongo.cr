@@ -2,7 +2,7 @@ require "../src/mongo/uri"
 require "spec"
 
 describe Mongo::Uri do
-  unless ENV["travis"]? == true
+  unless ENV["TRAVIS"]? == "true"
     it "should be able to create new uri" do
       uri = Mongo::Uri.new "mongodb://localhost:27017"
       uri.hosts.size.should eq(1)
@@ -27,7 +27,7 @@ describe Mongo::Uri do
       host.port.should eq(27017)
     end
   end
-  
+
   it "should be able to parse options" do
     uri = Mongo::Uri.new "mongodb://localhost/?safe=true&journal=false"
     uri.options["journal"].should be_false

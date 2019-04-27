@@ -24,7 +24,7 @@ describe Mongo::Database do
     db.drop
   end
 
-  unless ENV["travis"]? == true
+  unless ENV["TRAVIS"]? == "true"
     it "should be able to manage users" do
       client = Mongo::Client.new("mongodb://localhost")
       db = client["my_db_#{Time.now.to_unix}"]
